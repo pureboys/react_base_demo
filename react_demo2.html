@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>react demo 2</title>
+    <style>
+        .greeting {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+
+<div id="root"></div>
+<div id="root2"></div>
+<div id="root3"></div>
+<div id="root4"></div>
+<div id="root5"></div>
+<div id="root6"></div>
+
+
+<script src="./common/react.development.js"></script>
+<script src="./common/react-dom.development.js"></script>
+<script src="./common/babel.min.js"></script>
+
+<script type="text/babel">
+    //demo1
+    function formatName(user) {
+        return user.firstName + ' ' + user.lastName;
+    }
+    const user = {
+        firstName: 'Harper',
+        lastName: 'Perez',
+        avatarUrl : 'http://p2.sinaimg.cn/1596164601/180/62711427248323'
+    };
+    const element = (
+        <h1>
+            Hello, {formatName(user)}!
+        </h1>
+    );
+    ReactDOM.render(
+        element,
+        document.getElementById('root')
+    );
+    //demo2
+    function getGreeting(user) {
+        if (user) {
+            return <h1>Hello, {formatName(user)}!</h1>;
+        }
+        return <h1>Hello, Stranger.</h1>;
+    }
+    ReactDOM.render(
+        getGreeting(),
+        document.getElementById('root2')
+    );
+    //demo3
+    const element3 = (
+        <img src={user.avatarUrl} />
+    );
+    ReactDOM.render(
+        element3,
+        document.getElementById('root3')
+    );
+    //demo4
+    const element4 = (
+        <h1 className="greeting">
+            Hello, world!
+        </h1>
+    );
+    ReactDOM.render(
+        element4,
+        document.getElementById('root4')
+    );
+    //demo5
+    const element5 = React.createElement(
+        'h1',
+        {className: 'greeting'},
+        'Hello, world!'
+    );
+    ReactDOM.render(
+        element5,
+        document.getElementById('root5')
+    );
+    //demo6
+    const element6 = (
+        <div tabIndex="0">Hi</div>
+    );
+    ReactDOM.render(
+        element6,
+        document.getElementById('root6')
+    );
+</script>
+
+</body>
+</html>
