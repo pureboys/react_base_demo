@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>react demo jsp</title>
+</head>
+<body>
+
+<div id="root"></div>
+
+
+<script src="./common/react.development.js"></script>
+<script src="./common/react-dom.development.js"></script>
+<script src="./common/babel.min.js"></script>
+
+<script type="text/babel">
+    class TextBoxComponent extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {enable: false};
+            this.handleClick = this.handleClick.bind(this);
+        }
+
+        handleClick() {
+            this.setState(prevState => ({ // 这里返回的是一个对象
+                enable: !prevState.enable
+            }));
+        }
+
+        render() {
+            return <p>
+                <input type="text" disabled={this.state.enable}/>
+                <button onClick={this.handleClick}>改变状态</button>
+            </p>
+        }
+    }
+
+    ReactDOM.render(
+        <TextBoxComponent/>,
+        document.getElementById('root')
+    )
+
+</script>
+
+</body>
+</html>
