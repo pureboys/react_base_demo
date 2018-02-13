@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>react demo jsp</title>
+</head>
+<body>
+
+<div id="root"></div>
+
+
+<script src="./common/react.development.js"></script>
+<script src="./common/react-dom.development.js"></script>
+<script src="./common/babel.min.js"></script>
+
+<script type="text/babel">
+    class Hello extends React.Component {
+        constructor(props) {
+            super(props);
+        }
+
+        render() {
+            return (
+                <ol>
+                    {
+                        React.Children.map(
+                            this.props.children,
+                            (child) => (<li>{child}</li>)
+                        )
+                    }
+                </ol>
+            )
+        }
+    }
+
+    ReactDOM.render(
+        <Hello>
+            <span>hello</span>
+            <span>oliver</span>x
+        </Hello>,
+        document.getElementById('root'),
+    )
+</script>
+
+</body>
+</html>
